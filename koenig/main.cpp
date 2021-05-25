@@ -38,9 +38,9 @@ void N::foo(const T& t) {  std::cout << t; }
 int main() {
     N::T t;
     t.foo();     // OK: scope durch t festgelegt!
-    //foo(t);      // wäre ohne ADL fehlerhaft !
+    foo(t);      // wäre ohne ADL fehlerhaft !
                  // dank ADL ok:
-    //::foo(t);    // wäre ohne ADL noch akzeptabel
+    N::foo(t);    // wäre ohne ADL noch akzeptabel
     // nicht aber:
     N::operator<<(std::cout, t); // anstelle von:
     std::cout << t;  // nur mit ADL korrekt
